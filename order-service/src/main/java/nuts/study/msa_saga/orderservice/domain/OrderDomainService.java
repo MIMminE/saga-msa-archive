@@ -1,10 +1,10 @@
-package nuts.study.msa_saga.orderservice;
+package nuts.study.msa_saga.orderservice.domain;
 
-import nuts.study.msa_saga.orderservice.domain.Order;
-import nuts.study.msa_saga.orderservice.event.OrderCancelledEvent;
-import nuts.study.msa_saga.orderservice.event.OrderCreatedEvent;
-import nuts.study.msa_saga.orderservice.event.OrderPaidEvent;
-import nuts.study.msa_saga.orderservice.vo.RestaurantId;
+import nuts.study.msa_saga.orderservice.domain.model.Order;
+import nuts.study.msa_saga.orderservice.domain.event.OrderCancelledEvent;
+import nuts.study.msa_saga.orderservice.domain.event.OrderCreatedEvent;
+import nuts.study.msa_saga.orderservice.domain.event.OrderPaidEvent;
+import nuts.study.msa_saga.orderservice.domain.vo.RestaurantId;
 
 import java.util.List;
 

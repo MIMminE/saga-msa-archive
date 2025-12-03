@@ -1,9 +1,7 @@
-package nuts.study.msa_saga.orderservice.vo;
+package nuts.study.msa_saga.orderservice.domain.vo;
 
-import java.util.UUID;
 
 public record StreetAddress(
-        UUID id,
         String street,
         String postalCode,
         String city

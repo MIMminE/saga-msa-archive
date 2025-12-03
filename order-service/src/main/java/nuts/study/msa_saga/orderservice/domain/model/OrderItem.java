@@ -1,8 +1,8 @@
-package nuts.study.msa_saga.orderservice.domain;
+package nuts.study.msa_saga.orderservice.domain.model;
 
 import lombok.RequiredArgsConstructor;
-import nuts.study.msa_saga.orderservice.vo.Money;
-import nuts.study.msa_saga.orderservice.vo.OrderId;
+import nuts.study.msa_saga.orderservice.domain.vo.Money;
+import nuts.study.msa_saga.orderservice.domain.vo.OrderId;
 
 @RequiredArgsConstructor
 public class OrderItem {

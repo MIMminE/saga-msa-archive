@@ -1,10 +1,10 @@
-package nuts.study.msa_saga.orderservice.domain;
+package nuts.study.msa_saga.orderservice.domain.model;
 
 
 import lombok.Getter;
 import nuts.study.msa_saga.orderservice.annotation.AggregateRoot;
-import nuts.study.msa_saga.orderservice.exception.OrderDomainException;
-import nuts.study.msa_saga.orderservice.vo.*;
+import nuts.study.msa_saga.orderservice.domain.vo.*;
+import nuts.study.msa_saga.orderservice.domain.OrderDomainException;
 
 import java.util.List;
 import java.util.UUID;

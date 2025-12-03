@@ -1,19 +1,22 @@
-package nuts.study.msa_saga.orderservice.service;
+package nuts.study.msa_saga.orderservice.domain;
 
 import lombok.extern.slf4j.Slf4j;
-import nuts.study.msa_saga.orderservice.OrderDomainService;
-import nuts.study.msa_saga.orderservice.domain.Order;
-import nuts.study.msa_saga.orderservice.event.OrderCancelledEvent;
-import nuts.study.msa_saga.orderservice.event.OrderCreatedEvent;
-import nuts.study.msa_saga.orderservice.event.OrderPaidEvent;
-import nuts.study.msa_saga.orderservice.vo.RestaurantId;
+import nuts.study.msa_saga.orderservice.domain.model.Order;
+import nuts.study.msa_saga.orderservice.domain.event.OrderCancelledEvent;
+import nuts.study.msa_saga.orderservice.domain.event.OrderCreatedEvent;
+import nuts.study.msa_saga.orderservice.domain.event.OrderPaidEvent;
+import nuts.study.msa_saga.orderservice.domain.vo.RestaurantId;
+import org.springframework.stereotype.Service;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.List;
 
 @Slf4j
+@Service
 public class DefaultOrderDomainService implements OrderDomainService {
+
+    // 레파지토리, 퍼시스턴트에 대한 의존성 없이 도메인 로직만 구현
 
     @Override
     public OrderCreatedEvent validateAndInitiateOrder(Order order, RestaurantId restaurantId) {

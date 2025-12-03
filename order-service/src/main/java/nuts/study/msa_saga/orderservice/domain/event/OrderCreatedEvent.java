@@ -1,6 +1,6 @@
-package nuts.study.msa_saga.orderservice.event;
+package nuts.study.msa_saga.orderservice.domain.event;
 
-import nuts.study.msa_saga.orderservice.domain.Order;
+import nuts.study.msa_saga.orderservice.domain.model.Order;
 
 import java.time.ZonedDateTime;
 
