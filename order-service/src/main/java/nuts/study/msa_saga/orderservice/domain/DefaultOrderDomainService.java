@@ -57,5 +57,5 @@ public class DefaultOrderDomainService implements OrderDomainService {
 
     private void setOrderProductInformation(Order order, RestaurantId restaurantId) {
         // TODO: Implement logic to set product information in the order
-    }
+    }   
 }

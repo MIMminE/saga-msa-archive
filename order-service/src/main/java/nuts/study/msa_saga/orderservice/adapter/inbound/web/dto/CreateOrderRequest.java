@@ -1,4 +1,4 @@
-package nuts.study.msa_saga.orderservice.web.dto;
+package nuts.study.msa_saga.orderservice.adapter.inbound.web.dto;
 
 import nuts.study.msa_saga.orderservice.domain.model.OrderItem;
 import nuts.study.msa_saga.orderservice.domain.vo.StreetAddress;
