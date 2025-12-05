@@ -17,7 +17,6 @@ public class Order {
     private final StreetAddress streetAddress;
     private final Money price;
     private final List<OrderItem> orderItems;
-
     private TrackingId trackingId;
     private OrderStatus orderStatus;
     private List<String> failureMessages;
