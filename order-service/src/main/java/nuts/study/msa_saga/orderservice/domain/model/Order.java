@@ -1,7 +1,9 @@
 package nuts.study.msa_saga.orderservice.domain.model;
 
 
+import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import nuts.study.msa_saga.orderservice.domain.vo.*;
 import nuts.study.msa_saga.orderservice.domain.OrderDomainException;
 
@@ -9,15 +11,31 @@ import java.util.List;
 import java.util.UUID;
 
 @Getter
+@Entity
+@Table(name = "orders")
+@NoArgsConstructor
 public class Order {
 
-    private final UUID orderId;
-    private final CustomerId customerId;
-    private final RestaurantId restaurantId;
-    private final StreetAddress streetAddress;
-    private final Money price;
-    private final List<OrderItem> orderItems;
+    @Id
+    private UUID orderId;
+
+    @Embedded
+    private CustomerId customerId;
+
+    @Embedded
+    private RestaurantId restaurantId;
+
+    @Embedded
+    private StreetAddress streetAddress;
+
+    @Embedded
+    private Money price;
+    private List<OrderItem> orderItems;
+
+    @Embedded
     private TrackingId trackingId;
+
+    @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
     private List<String> failureMessages;
 

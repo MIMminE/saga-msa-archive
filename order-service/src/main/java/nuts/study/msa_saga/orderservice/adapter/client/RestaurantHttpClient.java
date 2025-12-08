@@ -2,11 +2,10 @@ package nuts.study.msa_saga.orderservice.adapter.client;
 
 import lombok.extern.slf4j.Slf4j;
 import nuts.study.msa_saga.orderservice.adapter.client.dto.RestaurantResponse;
-import nuts.study.msa_saga.orderservice.application.required.client.RestaurantClient;
+import nuts.study.msa_saga.orderservice.required.client.RestaurantClient;
 import nuts.study.msa_saga.orderservice.domain.model.Order;
 import nuts.study.msa_saga.orderservice.adapter.client.dto.RestaurantRequest;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;

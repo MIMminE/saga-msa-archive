@@ -2,14 +2,13 @@ package nuts.study.msa_saga.orderservice.adapter.api;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import nuts.study.msa_saga.orderservice.application.service.OrderService;
-import nuts.study.msa_saga.orderservice.domain.OrderCreateRequest;
-import nuts.study.msa_saga.orderservice.domain.model.Order;
+import nuts.study.msa_saga.orderservice.provided.OrderService;
+import nuts.study.msa_saga.orderservice.provided.dto.CancelOrderResponse;
+import nuts.study.msa_saga.orderservice.provided.dto.CreateOrderRequest;
+import nuts.study.msa_saga.orderservice.provided.dto.CreateOrderResponse;
+import nuts.study.msa_saga.orderservice.provided.dto.GetOrderResponse;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
@@ -20,13 +19,25 @@ public class OrderApi {
     private final OrderService orderService;
 
     @PostMapping
-    public ResponseEntity<CreateOrderResponse> createOrder(@RequestBody OrderCreateRequest request) {
+    public ResponseEntity<CreateOrderResponse> createOrder(@RequestBody CreateOrderRequest request) {
         log.info("Create order for customer: {} at restaurant: {}", request.customerId(), request.restaurantId());
-        CreateOrderResponse createOrderResponse = toCreateOrderResponse(orderService.createOrder(request));
-        return ResponseEntity.ok(createOrderResponse);
+        CreateOrderResponse response = orderService.createOrder(request);
+        return ResponseEntity.ok(response);
     }
 
-    private CreateOrderResponse toCreateOrderResponse(Order order) {
-        return new CreateOrderResponse(order.getTrackingId().id(), order.getOrderStatus(), "Order created successfully");
+    @PostMapping("/get/{orderId}")
+    public ResponseEntity<GetOrderResponse> getOrder(@PathVariable String orderId) {
+        log.info("Get order: {}", orderId);
+        GetOrderResponse response = orderService.getOrder(orderId);
+        return ResponseEntity.ok(response);
+    }
+
+
+    @PostMapping("/cancel/{orderId}")
+    // 인증된 사용자만 주문 취소 가능하도록 추후 수정 필요
+    public ResponseEntity<CancelOrderResponse> cancelOrder(@PathVariable String orderId) {
+        log.info("Cancel order: {}", orderId);
+        CancelOrderResponse response = orderService.cancelOrder(orderId);
+        return ResponseEntity.ok(response);
     }
 }
