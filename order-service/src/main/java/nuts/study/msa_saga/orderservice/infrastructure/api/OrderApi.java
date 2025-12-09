@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import nuts.study.msa_saga.orderservice.application.provided.OrderService;
 import nuts.study.msa_saga.orderservice.application.provided.dto.CancelOrderResponse;
-import nuts.study.msa_saga.orderservice.application.provided.dto.CreateOrderRequest;
+import nuts.study.msa_saga.orderservice.domain.CreateOrderRequest;
 import nuts.study.msa_saga.orderservice.application.provided.dto.CreateOrderResponse;
 import nuts.study.msa_saga.orderservice.application.provided.dto.GetOrderResponse;
 import org.springframework.http.ResponseEntity;

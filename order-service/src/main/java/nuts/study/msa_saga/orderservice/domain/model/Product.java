@@ -1,14 +1,18 @@
 package nuts.study.msa_saga.orderservice.domain.model;
 
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import nuts.study.msa_saga.orderservice.domain.vo.Money;
+
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Getter
-@Embeddable
+@Entity
 public class Product {
+    @Id
+    private UUID productId;
     private String name;
-    private Money price;
+    private Long price;
 }
