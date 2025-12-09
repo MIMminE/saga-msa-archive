@@ -1,16 +1,37 @@
 package nuts.study.msa_saga.orderservice.domain.model;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import nuts.study.msa_saga.orderservice.domain.vo.Money;
-import nuts.study.msa_saga.orderservice.domain.vo.OrderId;
+
+import java.util.UUID;
 
 @RequiredArgsConstructor
 @Getter
+@Entity
 public class OrderItem {
-    private final OrderId orderId;
-    private final Product product;
-    private final int quantity;
-    private final Money price;
-    private final Money subTotal;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private UUID orderItemId;
+    @Embedded
+    private Product product;
+    private int quantity;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "amount", column = @Column(name = "price_amount")),
+    })
+    private Money price;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "amount", column = @Column(name = "sub_total_amount")),
+    })
+    private Money subTotal;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private Order orderId;
 }

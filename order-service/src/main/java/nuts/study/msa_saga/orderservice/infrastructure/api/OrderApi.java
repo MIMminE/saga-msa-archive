@@ -10,6 +10,8 @@ import nuts.study.msa_saga.orderservice.application.provided.dto.GetOrderRespons
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @Slf4j
 @RestController
 @RequiredArgsConstructor
@@ -26,7 +28,7 @@ public class OrderApi {
     }
 
     @PostMapping("/get/{orderId}")
-    public ResponseEntity<GetOrderResponse> getOrder(@PathVariable String orderId) {
+    public ResponseEntity<GetOrderResponse> getOrder(@PathVariable UUID orderId) {
         log.info("Get order: {}", orderId);
         GetOrderResponse response = orderService.getOrder(orderId);
         return ResponseEntity.ok(response);
@@ -34,7 +36,7 @@ public class OrderApi {
 
     @PostMapping("/cancel/{orderId}")
     // 인증된 사용자만 주문 취소 가능하도록 추후 수정 필요
-    public ResponseEntity<CancelOrderResponse> cancelOrder(@PathVariable String orderId) {
+    public ResponseEntity<CancelOrderResponse> cancelOrder(@PathVariable UUID orderId) {
         log.info("Cancel order: {}", orderId);
         CancelOrderResponse response = orderService.cancelOrder(orderId);
         return ResponseEntity.ok(response);

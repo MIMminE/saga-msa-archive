@@ -5,11 +5,13 @@ import nuts.study.msa_saga.orderservice.application.provided.dto.CreateOrderRequ
 import nuts.study.msa_saga.orderservice.application.provided.dto.CreateOrderResponse;
 import nuts.study.msa_saga.orderservice.application.provided.dto.GetOrderResponse;
 
+import java.util.UUID;
+
 public interface OrderService {
 
     CreateOrderResponse createOrder(CreateOrderRequest request);
 
-    GetOrderResponse getOrder(String orderId);
+    GetOrderResponse getOrder(UUID orderId);
 
-    CancelOrderResponse cancelOrder(String orderId);
+    CancelOrderResponse cancelOrder(UUID orderId);
 }

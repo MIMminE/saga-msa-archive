@@ -14,4 +14,5 @@ public record OrderCreationSpec(
         List<OrderItem> orderItems,
         StreetAddress address
 ) {
+
 }

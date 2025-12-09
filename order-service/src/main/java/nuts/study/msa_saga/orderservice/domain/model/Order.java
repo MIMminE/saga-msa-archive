@@ -4,6 +4,7 @@ package nuts.study.msa_saga.orderservice.domain.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import nuts.study.msa_saga.orderservice.domain.OrderCreationSpec;
 import nuts.study.msa_saga.orderservice.domain.vo.*;
 import nuts.study.msa_saga.orderservice.domain.OrderDomainException;
 
@@ -19,37 +20,41 @@ public class Order {
     @Id
     private UUID orderId;
 
-    @Embedded
-    private CustomerId customerId;
+    private UUID customerId;
 
-    @Embedded
-    private RestaurantId restaurantId;
+    private UUID restaurantId;
 
     @Embedded
     private StreetAddress streetAddress;
 
     @Embedded
     private Money price;
-    private List<OrderItem> orderItems;
 
-    @Embedded
-    private TrackingId trackingId;
+    private UUID trackingId;
 
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
-    private List<String> failureMessages;
 
-    public Order(CustomerId customerId, RestaurantId restaurantId, StreetAddress streetAddress, Money price, List<OrderItem> orderItems) {
+    public static Order createOrder(OrderCreationSpec creationSpec) {
+        return new Order(
+                creationSpec.customerId(),
+                creationSpec.restaurantId(),
+                creationSpec.address(),
+                new Money(creationSpec.price()),
+                creationSpec.orderItems()
+        );
+    }
+
+    public Order(UUID customerId, UUID restaurantId, StreetAddress streetAddress, Money price, List<OrderItem> orderItems) {
         this.orderId = UUID.randomUUID();
         this.customerId = customerId;
         this.restaurantId = restaurantId;
         this.streetAddress = streetAddress;
         this.price = price;
-        this.orderItems = orderItems;
     }
 
     public void initializeOrder() {
-        this.trackingId = new TrackingId(UUID.randomUUID());
+        this.trackingId = UUID.randomUUID();
         this.orderStatus = OrderStatus.PENDING;
     }
 
@@ -72,23 +77,12 @@ public class Order {
             throw new OrderDomainException("Order is not in correct state for initCancel operation!");
         }
         orderStatus = OrderStatus.CANCELLING;
-        updateFailureMessages(failureMessages);
     }
 
-    public void cancel(List<String> failureMessages) {
+    public void cancel() {
         if (!(orderStatus == OrderStatus.CANCELLING || orderStatus == OrderStatus.PENDING)) {
             throw new OrderDomainException("Order is not in correct state for cancel operation!");
         }
         orderStatus = OrderStatus.CANCELLED;
-        updateFailureMessages(failureMessages);
-    }
-
-    private void updateFailureMessages(List<String> failureMessages) {
-        if (this.failureMessages != null && failureMessages != null) {
-            this.failureMessages.addAll(failureMessages.stream().filter(message -> !message.isEmpty()).toList());
-        }
-        if (this.failureMessages == null) {
-            this.failureMessages = failureMessages;
-        }
     }
 }

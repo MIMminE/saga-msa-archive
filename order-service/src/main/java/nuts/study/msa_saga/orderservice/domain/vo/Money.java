@@ -1,7 +1,10 @@
 package nuts.study.msa_saga.orderservice.domain.vo;
 
+import jakarta.persistence.Embeddable;
+
 import java.math.BigDecimal;
 
+@Embeddable
 public record Money(
         BigDecimal amount
 ) {

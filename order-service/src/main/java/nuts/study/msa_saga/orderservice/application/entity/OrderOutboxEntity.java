@@ -9,6 +9,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import nuts.study.msa_saga.orderservice.domain.model.Order;
+import nuts.study.msa_saga.orderservice.domain.vo.OrderStatus;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -25,22 +26,34 @@ public class OrderOutboxEntity {
     private String payload;
 
     @Enumerated(EnumType.STRING)
-    private SagaType type;
+    private EventType eventType;
+
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
 
     @Enumerated(EnumType.STRING)
     private OutboxStatus outboxStatus;
 
     private LocalDateTime createdAt;
 
-    public static OrderOutboxEntity create(Order order) {
+    public static OrderOutboxEntity create(Order order, EventType eventType) {
         OrderOutboxEntity entity = new OrderOutboxEntity();
         entity.id = UUID.randomUUID();
         entity.sagaId = UUID.randomUUID();
-        entity.trackingId = order.getTrackingId().id();
+        entity.trackingId = order.getTrackingId();
         entity.payload = ""; // Serialize order details as needed
-        entity.type = SagaType.ORDER_CREATION;
+        entity.orderStatus = order.getOrderStatus();
         entity.outboxStatus = OutboxStatus.PENDING;
+        entity.eventType = eventType;
         entity.createdAt = LocalDateTime.now();
         return entity;
+    }
+
+    public void complete() {
+        this.outboxStatus = OutboxStatus.SENT;
+    }
+
+    public void fail() {
+        this.outboxStatus = OutboxStatus.FAILED;
     }
 }
