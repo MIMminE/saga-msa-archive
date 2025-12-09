@@ -8,13 +8,13 @@ import nuts.study.msa_saga.orderservice.application.entity.OrderOutboxEntity;
 import nuts.study.msa_saga.orderservice.domain.OrderCreatePolicy;
 import nuts.study.msa_saga.orderservice.domain.OrderCreationSpec;
 import nuts.study.msa_saga.orderservice.domain.model.Order;
-import nuts.study.msa_saga.orderservice.provided.OrderService;
-import nuts.study.msa_saga.orderservice.provided.dto.CancelOrderResponse;
-import nuts.study.msa_saga.orderservice.provided.dto.CreateOrderRequest;
-import nuts.study.msa_saga.orderservice.provided.dto.CreateOrderResponse;
-import nuts.study.msa_saga.orderservice.provided.dto.GetOrderResponse;
-import nuts.study.msa_saga.orderservice.required.repository.OrderOutboxRepository;
-import nuts.study.msa_saga.orderservice.required.repository.OrderRepository;
+import nuts.study.msa_saga.orderservice.application.provided.OrderService;
+import nuts.study.msa_saga.orderservice.application.provided.dto.CancelOrderResponse;
+import nuts.study.msa_saga.orderservice.application.provided.dto.CreateOrderRequest;
+import nuts.study.msa_saga.orderservice.application.provided.dto.CreateOrderResponse;
+import nuts.study.msa_saga.orderservice.application.provided.dto.GetOrderResponse;
+import nuts.study.msa_saga.orderservice.application.required.repository.OrderOutboxRepository;
+import nuts.study.msa_saga.orderservice.application.required.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor

@@ -1,8 +1,8 @@
 package nuts.study.msa_saga.orderservice.application.service;
 
-import nuts.study.msa_saga.orderservice.provided.SagaMessageProcessor;
-import nuts.study.msa_saga.orderservice.provided.event.OrderCancelledEvent;
-import nuts.study.msa_saga.orderservice.provided.event.OrderPaymentApprovalEvent;
+import nuts.study.msa_saga.orderservice.application.provided.SagaMessageProcessor;
+import nuts.study.msa_saga.orderservice.application.provided.event.OrderCancelledEvent;
+import nuts.study.msa_saga.orderservice.application.provided.event.OrderPaymentApprovalEvent;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,9 +1,9 @@
 package nuts.study.msa_saga.orderservice.application.service;
 
 import lombok.RequiredArgsConstructor;
-import nuts.study.msa_saga.orderservice.adapter.saga.KafkaSagaPublisher;
-import nuts.study.msa_saga.orderservice.provided.SagaPublishService;
-import nuts.study.msa_saga.orderservice.required.repository.OrderOutboxRepository;
+import nuts.study.msa_saga.orderservice.infrastructure.saga.KafkaSagaPublisher;
+import nuts.study.msa_saga.orderservice.application.provided.SagaPublishService;
+import nuts.study.msa_saga.orderservice.application.required.repository.OrderOutboxRepository;
 import org.springframework.stereotype.Service;
 
 
