@@ -16,6 +16,7 @@ public class KafkaSagaPublisher implements SagaMessagePublisher {
 
     @Override
     public void publish(OrderSagaMessage message) {
-        kafkaTemplate.send("restaurant", message);
+        kafkaTemplate.send("restaurant-event", message);
+        log.info("Published saga message to Kafka: {}", message);
     }
 }

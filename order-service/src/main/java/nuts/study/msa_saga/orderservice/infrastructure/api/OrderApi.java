@@ -20,6 +20,11 @@ public class OrderApi {
 
     private final OrderService orderService;
 
+    @GetMapping("/health")
+    public ResponseEntity<String> healthCheck() {
+        return ResponseEntity.ok("Order Service is up and running!");
+    }
+
     @PostMapping
     public ResponseEntity<CreateOrderResponse> createOrder(@RequestBody CreateOrderRequest request) {
         log.info("Create order for customer: {} at restaurant: {}", request.customerId(), request.restaurantId());

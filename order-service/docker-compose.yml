@@ -24,3 +24,15 @@ services:
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+
+  # mysql database service
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_DATABASE: orders_db
+      MYSQL_USER: order_user
+      MYSQL_PASSWORD: order_password
+      MYSQL_ROOT_PASSWORD: root_password
+    ports:
+      - "3307:3306"

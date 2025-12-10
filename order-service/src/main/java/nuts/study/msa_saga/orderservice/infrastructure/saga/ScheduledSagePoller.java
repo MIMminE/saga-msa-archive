@@ -11,7 +11,7 @@ public class ScheduledSagePoller {
 
     private final SagaPublishService sagaPublishService;
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 10000)
     public void tick() {
         sagaPublishService.publish();
     }

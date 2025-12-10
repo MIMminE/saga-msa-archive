@@ -1,25 +1,39 @@
 package nuts.study.msa_saga.orderservice.domain.model;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
-@RequiredArgsConstructor
 @Getter
 @Entity
+@NoArgsConstructor
+@Table(name = "order_items")
 public class OrderItem {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID orderItemId;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long orderItemId;
+
+    private String productId;
+    private String productName;
+    private String productPrice;
+    private int quantity;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
-    private Order orderId;
+    @Getter(AccessLevel.NONE)
+    private Order order;
 
-    private UUID productId;
+    public OrderItem(Product product, int quantity) {
+        this.productId = product.getProductId();
+        this.productName = product.getName();
+        this.productPrice = String.valueOf(product.getPrice());
+        this.quantity = quantity;
+    }
 
-    private int quantity;
+    public void assignOrder(Order order) {
+        this.order = order;
+    }
 }

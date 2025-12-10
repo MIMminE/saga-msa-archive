@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
 
+
 public interface OrderOutboxRepository extends Repository<OrderOutboxEntity, UUID> {
 
     OrderOutboxEntity save(OrderOutboxEntity orderOutboxEntity);
