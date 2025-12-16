@@ -7,3 +7,4 @@ import java.util.UUID;
 
 public interface RestaurantRepository extends Repository<Restaurant, UUID> {
 }
+

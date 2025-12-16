@@ -1,7 +1,6 @@
 package nuts.study.msa_saga.orderservice.application.service;
 
 import lombok.extern.slf4j.Slf4j;
-import nuts.study.msa_saga.orderservice.application.entity.EventType;
 import nuts.study.msa_saga.orderservice.application.message.OrderSagaMessage;
 import nuts.study.msa_saga.orderservice.application.provided.SagaEventProcessor;
 import nuts.study.msa_saga.orderservice.application.service.processor.*;

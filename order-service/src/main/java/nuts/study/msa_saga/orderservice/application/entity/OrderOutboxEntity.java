@@ -26,9 +26,6 @@ public class OrderOutboxEntity {
     private String payload;
 
     @Enumerated(EnumType.STRING)
-    private EventType eventType;
-
-    @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
 
     @Enumerated(EnumType.STRING)
@@ -36,15 +33,13 @@ public class OrderOutboxEntity {
 
     private LocalDateTime createdAt;
 
-    public static OrderOutboxEntity create(Order order, EventType eventType) {
+    public static OrderOutboxEntity create(Order order) {
         OrderOutboxEntity entity = new OrderOutboxEntity();
         entity.id = UUID.randomUUID();
         entity.sagaId = UUID.randomUUID();
         entity.trackingId = order.getTrackingId();
         entity.payload = ""; // Serialize order details as needed
         entity.orderStatus = order.getOrderStatus();
-        entity.outboxStatus = OutboxStatus.PENDING;
-        entity.eventType = eventType;
         entity.createdAt = LocalDateTime.now();
         return entity;
     }

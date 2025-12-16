@@ -1,6 +1,6 @@
 package nuts.study.msa_saga.orderservice.application.entity;
 
-public enum OutboxStatus {
+public enum utboxStatus {
     PENDING,        // 생성됨, 아직 발행 전
     PUBLISHING,     // 발행 중(선택)
     SENT,           // 발행 완료

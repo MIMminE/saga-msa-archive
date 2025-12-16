@@ -1,8 +1,9 @@
 package nuts.study.msa_saga.orderservice.application.provided;
 
-import nuts.study.msa_saga.orderservice.application.message.OrderSagaMessage;
+
+import saga_msa.common.OrderSagaEvent;
 
 public interface SagaEventProcessor {
 
-    void processEvent(OrderSagaMessage orderSagaMessage);
+    void processEvent(OrderSagaEvent orderSagaMessage);
 }

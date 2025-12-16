@@ -1,6 +1,6 @@
-package nuts.study.msa_saga.orderservice.application.entity;
+package saga_msa.common;
 
-public enum EventType {
+public enum SageEventType {
     ORDER_CREATED,
     ORDER_CANCELLED,
     ORDER_REJECTED,

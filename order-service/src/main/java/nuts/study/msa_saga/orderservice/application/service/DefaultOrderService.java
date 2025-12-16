@@ -4,7 +4,6 @@ package nuts.study.msa_saga.orderservice.application.service;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import nuts.study.msa_saga.orderservice.application.entity.EventType;
 import nuts.study.msa_saga.orderservice.application.entity.OrderOutboxEntity;
 import nuts.study.msa_saga.orderservice.application.required.repository.OrderItemRepository;
 import nuts.study.msa_saga.orderservice.application.required.repository.ProductRepository;
@@ -20,7 +19,6 @@ import nuts.study.msa_saga.orderservice.domain.model.OrderItem;
 import nuts.study.msa_saga.orderservice.domain.model.Product;
 import org.springframework.stereotype.Service;
 
-import java.util.Map;
 import java.util.UUID;
 
 @RequiredArgsConstructor

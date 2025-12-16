@@ -1,8 +1,6 @@
-package nuts.study.msa_saga.orderservice.infrastructure.config;
+package nuts.study.msa_saga.restaurantservice.infrastructure.config;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import nuts.study.msa_saga.orderservice.application.message.OrderSagaMessage;
+import nuts.study.msa_saga.restaurantservice.application.message.OrderSagaMessage;
 import org.apache.kafka.common.errors.SerializationException;
 import org.apache.kafka.common.serialization.Deserializer;
 
